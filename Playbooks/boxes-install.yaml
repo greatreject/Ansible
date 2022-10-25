@@ -1,0 +1,10 @@
+- name: Install Boxes App
+  hosts: "*"
+  tasks:
+    - name: Install Boxes App
+      apt:
+        name: boxes
+        state: present
+        update_cache: true
+      become: true
+

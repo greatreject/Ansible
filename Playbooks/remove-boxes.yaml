@@ -1,0 +1,9 @@
+- name: Remove Boxes App
+  hosts: "*"
+  tasks:
+    - name: Remove Boxes App
+      apt:
+        name: boxes
+        state: absent
+        update_cache: true
+      become: true
