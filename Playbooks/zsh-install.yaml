@@ -1,0 +1,24 @@
+- name: install zsh
+  hosts: "*"
+  tasks:
+    - name: Install zsh
+      apt:
+        name: zsh
+        state: present
+        update_cache: true
+    - name: Install OhMyZSH
+      shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+    - name: Change Default shell to zsh
+      shell: chsh -s /bin/zsh
+    - name: Git Clone Powerlevel10k
+      shell: git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
+    - name: Apply Powerlevel10k Theme1       
+      shell: echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc
+    - name: Apply Powerlevel10k Theme2
+      shell: git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+      become: true
+    - name: Apply ZSH Autosuggestions
+      shell: git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+    - name: Add to ZSHRC
+      shell: sed -i 's/plugins=(git)/plugins=(git zsh-autosuggestions)/' ~/.zshrc
+    

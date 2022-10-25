@@ -1,0 +1,9 @@
+- name: Change file contents
+  hosts: "*"
+  become: yes
+  tasks:
+  - name: change file contents
+    ansible.builtin.lineinfile:
+      path: /home/amit/test.txt
+      regexp: 'ansible is working well!'
+      line: ansible is very very very very well!!

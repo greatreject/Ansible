@@ -1,7 +1,7 @@
-- name: Remove Boxes App
+- name: remove boxes
   hosts: "*"
   tasks:
-    - name: Remove Boxes App
+    - name: Uninstall Boxes
       apt:
         name: boxes
         state: absent

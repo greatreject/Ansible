@@ -1,0 +1,12 @@
+- name: enable SSH
+  hosts: "*"
+  become: yes
+  tasks:
+  - name: enable SSH
+    ansible.builtin.lineinfile:
+      path: /etc/ssh/sshd_config
+      regexp: '^PermitRootLogin no'
+      line: PermitRootLogin yes
+      #shell: sed -i 's/^PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
+      #shell: sed -i 's/.*PermitRootLogin.*/PermitRootLogin yes/' /etc/ssh/sshd_config
+    

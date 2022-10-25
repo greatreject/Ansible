@@ -1,7 +1,7 @@
-- name: Install Boxes App
+- name: install boxes
   hosts: "*"
   tasks:
-    - name: Install Boxes App
+    - name: Install Boxes
       apt:
         name: boxes
         state: present

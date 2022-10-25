@@ -1,0 +1,11 @@
+- name: timezone
+  hosts: "*"
+  become: yes
+  tasks:
+  - name: Set Timezone
+    shell: timedatectl
+    register: command_output
+  - local_action: copy command_output= dest=file
+#  - debug:
+#      var: command_output.stdout_lines
+     

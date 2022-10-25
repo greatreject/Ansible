@@ -1,0 +1,11 @@
+- name: file
+  hosts: "*"
+  become: yes
+  tasks:
+    - name: start copy
+      ansible.builtin.copy:
+        src: /root/.ssh/id_rsa.pub
+        dest: /root/.ssh/authorized_keys
+        owner: root
+        mode: '0644'
+  

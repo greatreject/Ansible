@@ -1,0 +1,12 @@
+- name: file
+  hosts: "*"
+  become: yes
+  tasks:
+    - name: start copy
+      ansible.builtin.copy:
+        src: /home/amit/test.txt
+        dest: /root
+        remote_src: yes
+        owner: root
+        mode: '0777'
+  

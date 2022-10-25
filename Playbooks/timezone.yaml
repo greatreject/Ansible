@@ -1,6 +1,6 @@
-- name: Set Timezone
+- name: timezone
   hosts: "*"
   become: yes
   tasks:
-  - name: timezone
+  - name: Set Timezone
     shell: timedatectl set-timezone Europe/London

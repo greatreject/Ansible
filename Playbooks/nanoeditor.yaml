@@ -1,0 +1,7 @@
+- name: nano
+  hosts: servers
+  tasks:
+    - name: ensure nano is installed
+      apt:
+        name: nano
+        state: present
